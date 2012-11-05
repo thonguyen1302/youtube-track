@@ -1,0 +1,47 @@
+<%- model_class = Video -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th><%= model_class.human_attribute_name(:this_week_rank) %></th>
+      <th><%= model_class.human_attribute_name(:last_week_rank) %></th>
+      <th><%= model_class.human_attribute_name(:video_name) %></th>
+      <th><%= model_class.human_attribute_name(:weeks_on_chart) %></th>
+      <th><%= model_class.human_attribute_name(:total_aggregate_view) %></th>
+      <th><%= model_class.human_attribute_name(:this_week_view) %></th>
+      <th><%= model_class.human_attribute_name(:plus_minus_view) %></th>
+      <th><%= model_class.human_attribute_name(:time_since_upload) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |video| %>
+
+      <tr>
+        
+        <td>
+            <%= video.get_top_videos.videos %>
+           <% video.get_top_videos.videos.each do  |clip| %> 
+
+           <tr>
+              <td><%= clip.title %></td>
+              <td><%= ((DateTime.now.to_date - clip.uploaded_at.to_date)/7).to_f.round(0) %> week</td>
+
+              
+           </tr>
+
+
+           <% end %>
+        </td>
+
+      </tr>
+
+    <% end %>
+
+  </tbody>
+
+</table>

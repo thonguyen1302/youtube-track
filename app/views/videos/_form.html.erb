@@ -1,0 +1,56 @@
+<%= form_for @video, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :this_week_rank, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :this_week_rank, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_week_rank, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :last_week_rank, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :video_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :video_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :weeks_on_chart, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :weeks_on_chart, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :total_aggregate_view, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :total_aggregate_view, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :this_week_view, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :this_week_view, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :plus_minus_view, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :plus_minus_view, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :time_since_upload, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :time_since_upload, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                videos_path, :class => 'btn' %>
+  </div>
+<% end %>

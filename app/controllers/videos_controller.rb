@@ -4,13 +4,14 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
     
-   
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @videos }
+      format.json { render json: VideosDatatable.new(view_context) }
     end
   end
+
+
 
   # GET /videos/1
   # GET /videos/1.json

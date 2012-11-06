@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th>title</th>
-      <th><%= model_class.human_attribute_name(:this_week_rank) %></th>
-      <th><%= model_class.human_attribute_name(:last_week_rank) %></th>
+      <th>Time since upload</th>
+      <th>This_week_view</th>
       <th><%= model_class.human_attribute_name(:video_name) %></th>
       <th><%= model_class.human_attribute_name(:weeks_on_chart) %></th>
       <th><%= model_class.human_attribute_name(:total_aggregate_view) %></th>
@@ -24,17 +24,17 @@
       <tr>
         
         <td>
-            <%= video.get_top_videos.videos %>
            <% video.get_top_videos.videos.each do  |clip| %> 
+               <%video.save_videos(clip)%>
+               <tr>
 
-           <tr>
-              <td><%= clip.title %></td>
-              <td><%= ((DateTime.now.to_date - clip.uploaded_at.to_date)/7).to_f.round(0) %> week</td>
+                  <td><%= clip.title %></td>
+                  <td><%= ((DateTime.now.to_date - clip.uploaded_at.to_date)/7).to_f.round(0) %> week</td>
+                  <td><%= clip.view_count %></td>
 
-              
-           </tr>
-
-
+                  
+               </tr>
+           
            <% end %>
         </td>
 

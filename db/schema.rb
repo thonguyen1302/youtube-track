@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105065043) do
+ActiveRecord::Schema.define(:version => 20121106031513) do
 
   create_table "videos", :force => true do |t|
     t.integer  "this_week_rank"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20121105065043) do
     t.integer  "time_since_upload"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.string   "video_id"
   end
 
 end

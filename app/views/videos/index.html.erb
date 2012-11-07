@@ -1,16 +1,4 @@
 <h1>Top videos</h1>
-<table id="videos" class="display" data-source="<%= videos_url(format: "json") %>">
-  <thead>
-    <tr>
-      <th>This week rank</th>
-      <th>Video name</th>
-      <th>Total aggregate view</th>
-      <th>Time since upload</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
 
 <%- model_class = Video -%>
 <div class="page-header">
@@ -21,26 +9,19 @@
     
   </thead>
   <tbody>
-    <% @videos.each do |video| %>
 
+    <% @videos.each do |video| %>
+    
       <tr>
-        
         <td>
           <% temp =0%>
            <% video.get_top_videos.videos.each do  |clip| %> 
-               
                <tr>
-
-                  
-
                   <% temp = temp.next%>
                   <%video.save_videos(clip, temp)%>
-
                </tr>
-           
            <% end %>
         </td>
-
       </tr>
       <%break%>
     <% end %>
@@ -48,3 +29,21 @@
   </tbody>
 
 </table>
+
+
+
+<table id="videos" class="display" data-source="<%= videos_url(format: "json") %>">
+  <thead>
+    <tr>
+      <th>This week rank</th>
+      <th>Video name</th>
+      <th>Total aggregate view</th>
+      <th>This week view</th>
+      <th>Time since upload</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+

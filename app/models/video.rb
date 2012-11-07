@@ -12,22 +12,22 @@ class Video < ActiveRecord::Base
 
    
    def save_videos(video, temp)
-   		
 		if Video.exists?(["video_id = ?", video.video_id])
-		  object = Video.find_by_video_id(video.video_id)
-		  object.update_attributes!( 
+		  clip = Video.find_by_video_id(video.video_id)
+		  clip.update_attributes!( 
 		  	:video_id => video.video_id,
 		    :video_name => video.title,
 		    :this_week_rank => temp,
-		    :total_aggregate_view => video.view_count,
-		    :time_since_upload => ((DateTime.now.to_date - video.uploaded_at.to_date)/7).to_f.round(0))
-			  	
+		    :this_week_view => video.view_count-(clip.total_aggregate_view),
+		    :total_aggregate_view => video.view_count,		    
+		  	:time_since_upload => video.uploaded_at)
 		else
 		  Video.create! :video_id => video.video_id,
 		    :video_name => video.title,
 		    :this_week_rank => temp,
-		    :this_week_view => video.view_count,
-		    :time_since_upload => ((DateTime.now.to_date - video.uploaded_at.to_date)/7).to_f.round(0)
+		    :this_week_view => video.view_count-(clip.total_aggregate_view),
+		    :total_aggregate_view => video.view_count,
+		    :time_since_upload => video.uploaded_at
 		end
 	end
    

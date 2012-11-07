@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106031513) do
+ActiveRecord::Schema.define(:version => 20121107023131) do
 
   create_table "videos", :force => true do |t|
     t.integer  "this_week_rank"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20121106031513) do
     t.integer  "total_aggregate_view"
     t.integer  "this_week_view"
     t.integer  "plus_minus_view"
-    t.integer  "time_since_upload"
+    t.datetime "time_since_upload"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "video_id"

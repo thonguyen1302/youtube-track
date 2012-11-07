@@ -1,4 +1,5 @@
 class VideosDatatable
+  require 'time-ago-in-words'
   delegate :params, :h, :link_to, :number_to_currency, to: :@view
 
   def initialize(view)
@@ -19,10 +20,12 @@ private
   def data
     videos.map do |video|
       [
+        
         h(video.this_week_rank),
         h(video.video_name),
         h(video.total_aggregate_view),
-        h(video.time_since_upload)       
+        h(video.this_week_view),
+        h(video.time_since_upload.time_ago_in_words)
        
       ]
     end
@@ -50,7 +53,7 @@ private
   end
 
   def sort_column
-    columns = %w[this_week_rank released_on price]
+    columns = %w[this_week_rank]
     columns[params[:iSortCol_0].to_i]
   end
 

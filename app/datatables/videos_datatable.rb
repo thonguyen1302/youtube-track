@@ -16,17 +16,19 @@ class VideosDatatable
   end
 
 private
-
   def data
     videos.map do |video|
       [
-        
         h(video.this_week_rank),
+        if (video.last_week_rank==0)
+          h("New video")
+        else
+          h(video.last_week_rank)
+        end,
         h(video.video_name),
         h(video.total_aggregate_view),
         h(video.this_week_view),
         h(video.time_since_upload.time_ago_in_words)
-       
       ]
     end
   end

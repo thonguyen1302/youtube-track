@@ -11,14 +11,14 @@
   <tbody>
 
     <% @videos.each do |video| %>
-    
+   
       <tr>
         <td>
-          <% temp =0%>
+          <% temp =0 %>
            <% video.get_top_videos.videos.each do  |clip| %> 
                <tr>
-                  <% temp = temp.next%>
-                  <%video.save_videos(clip, temp)%>
+                  <% temp = temp.next %>
+                  <% video.save_videos(clip, temp) %>
                </tr>
            <% end %>
         </td>
@@ -36,6 +36,7 @@
   <thead>
     <tr>
       <th>This week rank</th>
+      <th>Last week rank</th>
       <th>Video name</th>
       <th>Total aggregate view</th>
       <th>This week view</th>

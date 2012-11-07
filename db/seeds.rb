@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Video.delete_all
-Video.create(this_week_rank: 12, last_week_rank: 12, video_name: 'abc')
+Video.create(this_week_rank: 12, last_week_rank: 12, time_since_upload: '2012-11-07 03:44:31', video_name: 'abc', total_aggregate_view: 123)
 
 
  

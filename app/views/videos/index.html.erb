@@ -1,33 +1,64 @@
 <h1>Top videos</h1>
-
 <%- model_class = Video -%>
 <div class="page-header">
-  
 </div>
 <table class="table table-striped">
   <thead>
-    
   </thead>
   <tbody>
-
     <% @videos.each do |video| %>
    
       <tr>
         <td>
-          <% temp =0 %>
+          <% temp_video =0 %>
            <% video.get_top_videos.videos.each do  |clip| %> 
                <tr>
-                  <% temp = temp.next %>
-                  <% video.save_videos(clip, temp) %>
+                  <% temp_video = temp_video.next %>
+                  <% video.save_videos(clip, temp_video) %>
                </tr>
            <% end %>
         </td>
       </tr>
+
+      <br/>
+      <tr>
+        <td>
+          <% temp_playlist =0 %>
+           <% video.get_top_playlists.each do  |list| %> 
+               <tr>
+                  <% temp_playlist = temp_playlist.next %>
+                  <%= temp_playlist %>
+                  <%= list.title %>
+
+                  <% list_video = video.get_videos_of_playlists(list.playlist_id)%>
+                  <% total_aggregate_view=0 %>
+                  <% video_in_series=0 %>
+                  <% commens=0 %>
+                  <% shares=0 %>
+                  <% list_video.each do  |video_in_playlist| %> 
+                    <% total_aggregate_view+=video_in_playlist.view_count %>
+                    <% video_in_series+=1 %>
+                    <% commens+=video_in_playlist.comment_count%>
+                    
+                  <%end%>
+                  
+                  total_aggregate_view <%= total_aggregate_view %>
+                  video_in_series <%= video_in_series+=1 %>
+                  commens<%= commens %>
+                  shares<%= shares %>
+                
+
+                  <br/>
+                  
+               </tr>
+           <% end %>
+        </td>
+      </tr>
+
+
       <%break%>
     <% end %>
-
   </tbody>
-
 </table>
 
 

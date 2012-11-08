@@ -8,6 +8,7 @@ class VideosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: VideosDatatable.new(view_context) }
+      format.json { render json: PlaylistsDatatable.new(view_context) }
     end
   end
 

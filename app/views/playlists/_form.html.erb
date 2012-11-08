@@ -1,0 +1,53 @@
+<%= form_for(@playlist) do |f| %>
+  <% if @playlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@playlist.errors.count, "error") %> prohibited this playlist from being saved:</h2>
+
+      <ul>
+      <% @playlist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :this_week_rank %><br />
+    <%= f.number_field :this_week_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :playlist_name %><br />
+    <%= f.text_field :playlist_name %>
+  </div>
+  <div class="field">
+    <%= f.label :total_aggregate_views %><br />
+    <%= f.number_field :total_aggregate_views %>
+  </div>
+  <div class="field">
+    <%= f.label :this_week_views %><br />
+    <%= f.number_field :this_week_views %>
+  </div>
+  <div class="field">
+    <%= f.label :weekly_view %><br />
+    <%= f.number_field :weekly_view %>
+  </div>
+  <div class="field">
+    <%= f.label :video_in_series %><br />
+    <%= f.number_field :video_in_series %>
+  </div>
+  <div class="field">
+    <%= f.label :last_week_rank %><br />
+    <%= f.number_field :last_week_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.number_field :comments %>
+  </div>
+  <div class="field">
+    <%= f.label :shares %><br />
+    <%= f.number_field :shares %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  this_week_rank: 1
+  playlist_name: MyString
+  total_aggregate_views: 1
+  this_week_views: 1
+  weekly_view: 1
+  video_in_series: 1
+  last_week_rank: 1
+  comments: 1
+  shares: 1
+
+two:
+  this_week_rank: 1
+  playlist_name: MyString
+  total_aggregate_views: 1
+  this_week_views: 1
+  weekly_view: 1
+  video_in_series: 1
+  last_week_rank: 1
+  comments: 1
+  shares: 1

@@ -1,4 +1,6 @@
 YoutubeTrack::Application.routes.draw do
+  resources :playlists
+
   resources :videos
 
   # The priority is based upon order of creation:

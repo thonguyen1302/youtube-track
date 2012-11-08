@@ -6,8 +6,8 @@
   <thead>
   </thead>
   <tbody>
+
     <% @videos.each do |video| %>
-   
       <tr>
         <td>
           <% temp_video =0 %>
@@ -27,26 +27,9 @@
            <% video.get_top_playlists.each do  |list| %> 
                <tr>
                   <% temp_playlist = temp_playlist.next %>
-                  <%= temp_playlist %>
-                  <%= list.title %>
-
-                  <% list_video = video.get_videos_of_playlists(list.playlist_id)%>
-                  <% total_aggregate_view=0 %>
-                  <% video_in_series=0 %>
-                  <% commens=0 %>
-                  <% shares=0 %>
-                  <% list_video.each do  |video_in_playlist| %> 
-                    <% total_aggregate_view+=video_in_playlist.view_count %>
-                    <% video_in_series+=1 %>
-                    <% commens+=video_in_playlist.comment_count%>
-                    
-                  <%end%>
                   
-                  total_aggregate_view <%= total_aggregate_view %>
-                  video_in_series <%= video_in_series+=1 %>
-                  commens<%= commens %>
-                  shares<%= shares %>
-                
+
+                  <% video.save_playlists(list, temp_playlist) %>
 
                   <br/>
                   
@@ -60,6 +43,7 @@
     <% end %>
   </tbody>
 </table>
+
 
 
 
@@ -78,4 +62,21 @@
   </tbody>
 </table>
 
+
+<h1>Top playlists</h1>
+<table id="playlists" class="display" data-source="<%= playlists_url(format: "json") %>">
+  <thead>
+    <tr>
+      <th>This week rank</th>
+      <th>Last week rank</th>
+      <th>Playlist name</th>
+      <th>Total aggregate view</th>
+      <th>This week views</th>
+      <th>Video in series</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
 

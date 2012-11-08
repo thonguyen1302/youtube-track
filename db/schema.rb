@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107023131) do
+ActiveRecord::Schema.define(:version => 20121108075749) do
+
+  create_table "playlists", :force => true do |t|
+    t.integer  "this_week_rank"
+    t.string   "playlist_name"
+    t.integer  "total_aggregate_views"
+    t.integer  "this_week_views"
+    t.integer  "weekly_view"
+    t.integer  "video_in_series"
+    t.integer  "last_week_rank"
+    t.integer  "comments"
+    t.integer  "shares"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "playlist_id"
+  end
 
   create_table "videos", :force => true do |t|
     t.integer  "this_week_rank"

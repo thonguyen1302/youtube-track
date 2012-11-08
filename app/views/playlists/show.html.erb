@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>This week rank:</b>
+  <%= @playlist.this_week_rank %>
+</p>
+
+<p>
+  <b>Playlist name:</b>
+  <%= @playlist.playlist_name %>
+</p>
+
+<p>
+  <b>Total aggregate views:</b>
+  <%= @playlist.total_aggregate_views %>
+</p>
+
+<p>
+  <b>This week views:</b>
+  <%= @playlist.this_week_views %>
+</p>
+
+<p>
+  <b>Weekly view:</b>
+  <%= @playlist.weekly_view %>
+</p>
+
+<p>
+  <b>Video in series:</b>
+  <%= @playlist.video_in_series %>
+</p>
+
+<p>
+  <b>Last week rank:</b>
+  <%= @playlist.last_week_rank %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @playlist.comments %>
+</p>
+
+<p>
+  <b>Shares:</b>
+  <%= @playlist.shares %>
+</p>
+
+
+<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<%= link_to 'Back', playlists_path %>

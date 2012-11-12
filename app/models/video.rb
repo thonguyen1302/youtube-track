@@ -17,6 +17,11 @@ class Video < ActiveRecord::Base
 		playlists.videos
   end
 
+  def get_averages
+		
+		averages = Average.find_by_sql("SELECT * FROM averages")
+  end
+
 
   def save_videos(video, temp)
 		if Video.exists?(["video_id = ? and this_week_rank = ?", video.video_id, temp])
@@ -75,7 +80,6 @@ class Video < ActiveRecord::Base
 
 
 
-
 	def save_playlists(playlist, temp)
 			list_video = get_videos_of_playlists(playlist.playlist_id)
       total_aggregate_view=0 
@@ -83,7 +87,7 @@ class Video < ActiveRecord::Base
       commens=0 
       shares=0 
       list_video.each do  |video_in_playlist| 
-		    total_aggregate_view+=video_in_playlist.view_count 
+		    total_aggregate_view+=video_in_playlist.view_count
 		    video_in_series+=1 
 		    commens+=video_in_playlist.comment_count
       end
@@ -141,5 +145,19 @@ class Video < ActiveRecord::Base
 			  end
 			end
 		end
+	end
+
+
+
+	def save_average
+		newest_record = Average.order("created_at").last
+			if (newest_record.created_at.strftime("%m/%d/%Y")<Time.now.strftime("%m/%d/%Y"))
+				Average.create! :average_view => (Playlist.sum('total_aggregate_views')/Playlist.sum('video_in_series')).to_i
+			end
+	end
+
+	def get_newest_record
+		newest_record = Average.order("created_at").last
+			newest_record.created_at
 	end
 end

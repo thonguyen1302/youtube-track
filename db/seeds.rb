@@ -6,8 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Playlist.delete_all
-Playlist.create(this_week_rank: 12, last_week_rank: 12, playlist_name: 'abc', total_aggregate_views: 123)
 
+Average.delete_all
+Average.create(average_view: 812646, created_at: "2012-11-7 14:33:05")
+Average.create(average_view: 822646, created_at: "2012-11-8 14:33:05")
+Average.create(average_view: 792646, created_at: "2012-11-9 14:33:05")
+Average.create(average_view: 822646, created_at: "2012-11-10 14:33:05")
+Average.create(average_view: 802646, created_at: "2012-11-11 14:33:05")
+Average.create(average_view: 832646, created_at: "2012-11-12 14:33:05")
 
  

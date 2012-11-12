@@ -3,6 +3,7 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.all
+
     
 
     respond_to do |format|

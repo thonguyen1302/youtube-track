@@ -1,13 +1,12 @@
-<h1>Top videos</h1>
+
 <%- model_class = Video -%>
 <div class="page-header">
 </div>
 <table class="table table-striped">
-  <thead>
-  </thead>
   <tbody>
 
     <% @videos.each do |video| %>
+
       <tr>
         <td>
           <% temp_video =0 %>
@@ -20,33 +19,59 @@
         </td>
       </tr>
 
-      <br/>
+      
       <tr>
         <td>
           <% temp_playlist =0 %>
            <% video.get_top_playlists.each do  |list| %> 
                <tr>
                   <% temp_playlist = temp_playlist.next %>
-                  
-
-                  <% video.save_playlists(list, temp_playlist) %>
-
-                  <br/>
-                  
+                  <% video.save_playlists(list, temp_playlist) %>              
                </tr>
            <% end %>
         </td>
       </tr>
-
-
+        <% video.save_average %>
       <%break%>
     <% end %>
   </tbody>
 </table>
 
+<h1>Average views pre video</h1>
+<head>
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        
+        function drawChart() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('number', 'Date');
+          data.addColumn('number', 'Views');
 
+          <% @videos.each do |video| %>
 
+          <% temp_video =-1 %>
 
+           <% video.get_averages.each do  |clip| %> 
+                  <% temp_video = temp_video.next %>
+                  <% if clip.created_at >= 7.days.ago %>
+                    data.addRows([
+                      [<%= clip.created_at.day%>,  <%=clip.average_view%>]
+                    ]);
+                  <%end%>
+           <% end %>
+            <%break%>
+          <% end %>
+          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          chart.draw(data);
+        }
+      </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 800px; height: 400px;"></div>
+  </body>
+
+<h1>Top videos</h1>
 <table id="videos" class="display" data-source="<%= videos_url(format: "json") %>">
   <thead>
     <tr>
@@ -79,4 +104,3 @@
   <tbody>
   </tbody>
 </table>
-

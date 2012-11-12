@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108075749) do
+ActiveRecord::Schema.define(:version => 20121109094117) do
+
+  create_table "averages", :force => true do |t|
+    t.integer  "average_view"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "playlists", :force => true do |t|
     t.integer  "this_week_rank"
